@@ -1,3 +1,19 @@
+<?php
+    $database = new PDO("mysql:host=127.0.0.1;dbname=test;port=3306;", "root", ""); // подключение к бд
+    $query = $database->query("SELECT id, title, text FROM articles"); // выполняем запрос
+    // foreach ($query as $row) { // перебор возвращенных значений
+        // print_r($row);
+    // }
+    // print_r($query->fetch());
+    // while ($row = $query->fetch()) {
+    //     print_r($row);
+    // }
+    // print_r($query->fetchAll(PDO::FETCH_ASSOC));
+    // print_r($query->fetchAll(PDO::FETCH_KEY_PAIR));
+    // print_r($query->fetchAll(PDO::FETCH_COLUMN));
+    $articles = $query->fetchAll(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +28,17 @@
 <body>
     <div class="container mt-3">
         <div class="row">
-            <div class="col-12">
-            </div>
+            <?php foreach($articles as $id => $row) : ?>
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $row['title'] ?></h5>
+                            <!-- <p class="card-text"><?= $row['text'] ?></p> -->
+                            <a href="article.php?id=<?= $id ?>" class="btn btn-primary">Посмотреть</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>
