@@ -1,7 +1,18 @@
 <?php
-    $database = new PDO("mysql:host=127.0.0.1;dbname=test;port=3306;", "root", ""); // подключение к бд
-    $query = $database->query("SELECT id, title, text FROM articles WHERE id = " . $_GET['id']); // выполняем запрос
-    $article = $query->fetch(PDO::FETCH_ASSOC|PDO::FETCH_UNIQUE);
+    require "connection.php";
+    // $query = $database->query("SELECT id, title, text FROM articles WHERE id = " . $_GET['id']); // выполняем запрос
+
+    $query = $database->prepare("SELECT id, title, text FROM articles WHERE id = ?"); // подготоваливаем запрос
+    // $query = $database->prepare("SELECT id, title, text FROM articles WHERE id = :abc"); // подготоваливаем запрос
+    $params = [
+        $_GET['id']
+    ];
+    // $params = [
+    //     'abc' => $_GET['id'],
+    //     'xyz' => 'sdafljk'
+    // ];
+    $query->execute($params); // вызываем запрос с параметрами
+    $article = $query->fetch();
 ?>
 
 <!DOCTYPE html>
