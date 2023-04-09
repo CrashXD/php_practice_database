@@ -34,6 +34,9 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= $article['title'] ?></h5>
                             <p class="card-text"><?= $article['text'] ?></p>
+                            <a href="index.php" class="btn btn-primary">На главную</a>
+                            <a href="update.php?id=<?= $article["id"] ?>" class="btn btn-warning">Изменить</a>
+                            <a href="delete.php?id=<?= $article["id"] ?>" class="btn btn-danger">Удалить</a>
                         </div>
                     </div>
                 </div>

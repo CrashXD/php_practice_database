@@ -28,6 +28,9 @@
 <body>
     <div class="container mt-3">
         <div class="row">
+            <div class="col-12 mb-3">
+                <a href="insert.php" class="btn btn-success">Добавить новую статью</a>
+            </div>
             <?php foreach($articles as $article) : ?>
                 <div class="col-12 mb-3">
                     <div class="card">
@@ -35,6 +38,8 @@
                             <h5 class="card-title"><?= $article['title'] ?></h5>
                             <!-- <p class="card-text"><?= $article['text'] ?></p> -->
                             <a href="article.php?id=<?= $article["id"] ?>" class="btn btn-primary">Посмотреть</a>
+                            <a href="update.php?id=<?= $article["id"] ?>" class="btn btn-warning">Изменить</a>
+                            <a href="delete.php?id=<?= $article["id"] ?>" class="btn btn-danger">Удалить</a>
                         </div>
                     </div>
                 </div>
