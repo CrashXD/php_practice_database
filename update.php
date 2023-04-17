@@ -48,18 +48,23 @@ if (
 <body>
     <div class="container mt-3">
         <div class="row">
-            <form action="" method="POST">
-                <div class="mb-3">
-                    <label for="title" class="form-label">Заголовок</label>
-                    <input type="text" class="form-control" id="title" name="title" value="<?= $article['title'] ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="text" class="form-label">Текст</label>
-                    <textarea class="form-control" id="text" name="text" rows="8"><?= $article['text'] ?></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Изменить статью</button>
-                <a href="/index.php" class="btn btn-secondary">Вернуться назад</a>
-            </form>
+            <div class="col-12 mb-3">
+                <h2>Изменить статью</h2>
+            </div>
+            <div class="col-12 mb-3">
+                <form action="" method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Заголовок</label>
+                        <input type="text" class="form-control" id="title" name="title" value="<?= $article['title'] ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="text" class="form-label">Текст</label>
+                        <textarea class="form-control" id="text" name="text" rows="8"><?= $article['text'] ?></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Изменить статью</button>
+                    <a href="/index.php" class="btn btn-secondary">Вернуться назад</a>
+                </form>
+            </div>
         </div>
     </div>
 </body>
